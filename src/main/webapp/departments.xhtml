@@ -7,22 +7,21 @@
 <title>Виды принтеров</title>
 <h:outputStylesheet library="css" name="main.css"/>
 <h:head/>
-<h:body style="text-align: center">
+<h:body>
     <h:button value="Принтеры" outcome="printers"/>
     <h:button value="Виды принтеров" outcome="printer_models"/>
     <h:button value="Запчасти" outcome="expendables"/>
     <h:button value="Виды запчастей" outcome="expendable_types"/>
-    <h3>Виды принтеров</h3>
+    <h2>Виды принтеров</h2>
     <hr/>
     <h:form>
         <h:messages showDetail="true" style="color:red"/>
-        <h:commandButton immediate="true" value="Добавить" action="#{departmentController.addToList}">
+        <h:commandButton immediate="true" value="+" action="#{departmentController.addToList}">
             <f:ajax execute="@form" render="@form"/>
         </h:commandButton>
         <h:commandButton value="Сохранить" action="#{departmentController.mergeList('departments')}"/>
         <h:dataTable var="department"
-                     value="#{departmentController.list}"
-                     style="margin: auto; border: 1px solid black;">
+                     value="#{departmentController.list}">
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Название"/>
@@ -38,6 +37,5 @@
             </h:column>
         </h:dataTable>
     </h:form>
-    <hr/>
-</h:body>
+   </h:body>
 </html>

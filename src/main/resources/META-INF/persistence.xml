@@ -4,8 +4,8 @@
         <jta-data-source>java:global/jdbc/db</jta-data-source>
         <properties>
             <property name="javax.persistence.schema-generation.database.action" value="create"/>
-            <property name="javax.persistence.schema-generation.scripts.action" value="create"/>
-            <property name="javax.persistence.schema-generation.scripts.create-target" value="C:\Users\Artem\Desktop\DB\src\main\resources\META-INF\create.ddl"/>
+<!--            <property name="javax.persistence.schema-generation.scripts.action" value="create"/>-->
+<!--            <property name="javax.persistence.schema-generation.scripts.create-target" value="C:\Users\Artem\Desktop\DB\src\main\resources\META-INF\create.ddl"/>-->
         </properties>
     </persistence-unit>
 </persistence>

@@ -2,6 +2,7 @@ package model;
 
 import controller.PrinterController;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
@@ -9,14 +10,23 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQuery(name = PrinterController.getAllPrinters, query = "SELECT p FROM Printer p")
 public class Printer extends AbstractModel {
-    @ManyToOne
-    private PrinterClass printerClass;
+    private String inventoryNumber;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private PrinterModel printerModel;
 
-    public PrinterClass getPrinterClass() {
-        return printerClass;
+    public String getInventoryNumber() {
+        return inventoryNumber;
     }
 
-    public void setPrinterClass(PrinterClass printerClass) {
-        this.printerClass = printerClass;
+    public void setInventoryNumber(String inventoryNumber) {
+        this.inventoryNumber = inventoryNumber;
+    }
+
+    public PrinterModel getPrinterModel() {
+        return printerModel;
+    }
+
+    public void setPrinterModel(PrinterModel printerModel) {
+        this.printerModel = printerModel;
     }
 }

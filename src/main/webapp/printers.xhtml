@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<title>Принтеры</title>
+<h:outputStylesheet library="css" name="main.css"/>
+<h:head/>
+<h:body style="text-align: center">
+    <h:button value="Виды принтеров" outcome="printer_models"/>
+    <h:button value="Запчасти" outcome="expendables"/>
+    <h:button value="Виды запчастей" outcome="expendable_types"/>
+    <h3>Принтеры</h3>
+    <hr/>
+    <h:form>
+        <h:commandButton value="Добавить" action="#{printerController.addToList}">
+            <f:ajax execute="@form" render="@form"/>
+        </h:commandButton>
+        <h:commandButton value="Сохранить" action="#{printerController.mergeList}">
+            <f:ajax execute="@form" render="@form"/>
+        </h:commandButton>
+        <h:dataTable var="printer"
+                     value="#{printerController.list}"
+                     style="margin: auto; border: 1px solid black;">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Инвентарный номер"/>
+                </f:facet>
+                <h:inputText value="#{printer.inventoryNumber}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Модель"/>
+                </f:facet>
+                <h:selectOneMenu id="class"
+                                 value="#{printer.printerModel}"
+                                 converter="#{printerModelController}">
+                    <f:selectItems value="#{printerModelController.list}"
+                                   var="printer_class"
+                                   itemValue="#{printer_class}"
+                                   itemLabel="#{printer_class.manufacturer}-#{printer_class.model}"/>
+                </h:selectOneMenu>
+            </h:column>
+            <h:column>
+                <h:commandButton value="x" action="#{printerController.removeFromList(printer)}">
+                    <f:ajax execute="@form" render="@form"/>
+                </h:commandButton>
+            </h:column>
+        </h:dataTable>
+    </h:form>
+    <hr/>
+</h:body>
+</html>

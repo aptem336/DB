@@ -1,6 +1,6 @@
 package controller;
 
-import model.Printer;
+import model.Expendable;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -9,8 +9,8 @@ import javax.persistence.EntityManager;
 
 @Named
 @RequestScoped
-public class PrinterController extends AbstractController<Printer> {
-    public static final String getAllPrinters = "getAllPrinters";
+public class ExpendableController extends AbstractController<Expendable> {
+    public static final String getAllExpendables = "getAllExpendables";
     @Inject
     private EntityManager em;
 
@@ -21,11 +21,11 @@ public class PrinterController extends AbstractController<Printer> {
 
     @Override
     String getAllNamedQuery() {
-        return getAllPrinters;
+        return getAllExpendables;
     }
 
     @Override
-    Class<Printer> getModelClass() {
-        return Printer.class;
+    Class<Expendable> getModelClass() {
+        return Expendable.class;
     }
 }

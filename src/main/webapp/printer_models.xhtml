@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<title>Виды принтеров</title>
+<h:outputStylesheet library="css" name="main.css"/>
+<h:head/>
+<h:body style="text-align: center">
+    <h:button value="Принтеры" outcome="printers"/>
+    <h:button value="Запчасти" outcome="expendables"/>
+    <h:button value="Виды запчастей" outcome="expendables"/>
+    <h3>Виды принтеров</h3>
+    <hr/>
+    <h:form>
+        <h:commandButton value="Добавить" action="#{printerModelController.addToList}">
+            <f:ajax execute="@form" render="@form"/>
+        </h:commandButton>
+        <h:commandButton value="Сохранить" action="#{printerModelController.mergeList}">
+            <f:ajax execute="@form" render="@form"/>
+        </h:commandButton>
+        <h:dataTable var="printer_class"
+                     value="#{printerModelController.list}"
+                     style="margin: auto; border: 1px solid black;">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Производитель"/>
+                </f:facet>
+                <h:inputText value="#{printer_class.manufacturer}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Модель"/>
+                </f:facet>
+                <h:inputText value="#{printer_class.model}"/>
+            </h:column>
+            <h:column>
+                <h:commandButton value="x" action="#{printerModelController.removeFromList(printer_class)}">
+                    <f:ajax execute="@form" render="@form"/>
+                </h:commandButton>
+            </h:column>
+        </h:dataTable>
+    </h:form>
+    <hr/>
+</h:body>
+</html>

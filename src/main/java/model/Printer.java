@@ -2,7 +2,6 @@ package model;
 
 import controller.PrinterController;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
@@ -14,9 +13,9 @@ public class Printer extends AbstractModel {
     @NotNull
     private String inventoryNumber;
     @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private PrinterModel printerModel;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Department department;
 
     public String getInventoryNumber() {

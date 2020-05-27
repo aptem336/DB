@@ -2,7 +2,9 @@ package model;
 
 import controller.ExpendableController;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -12,10 +14,10 @@ public class Expendable extends AbstractModel {
     private String serialNumber;
     @NotNull
     private Integer mileage;
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Printer printer;
     @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private ExpendableType expendableType;
 
     public Integer getMileage() {

@@ -2,16 +2,15 @@ package model;
 
 import controller.ExpendableController;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
+import javax.persistence.*;
 
 @Entity
 @NamedQuery(name = ExpendableController.getAllExpendables, query = "SELECT e FROM Expendable e")
 public class Expendable extends AbstractModel {
     private String serialNumber;
     private Integer mileage;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Printer printer;
     @ManyToOne(cascade = CascadeType.ALL)
     private ExpendableType expendableType;
 
@@ -37,5 +36,13 @@ public class Expendable extends AbstractModel {
 
     public void setSerialNumber(String serialNumber) {
         this.serialNumber = serialNumber;
+    }
+
+    public Printer getPrinter() {
+        return printer;
+    }
+
+    public void setPrinter(Printer printer) {
+        this.printer = printer;
     }
 }

@@ -11,6 +11,7 @@
     <h:button value="Виды принтеров" outcome="printer_models"/>
     <h:button value="Запчасти" outcome="expendables"/>
     <h:button value="Виды запчастей" outcome="expendable_types"/>
+    <h:button value="Отделы" outcome="departments"/>
     <h3>Принтеры</h3>
     <hr/>
     <h:form>
@@ -33,13 +34,24 @@
                 <f:facet name="header">
                     <h:outputText value="Модель"/>
                 </f:facet>
-                <h:selectOneMenu id="class"
-                                 value="#{printer.printerModel}"
+                <h:selectOneMenu value="#{printer.printerModel}"
                                  converter="#{printerModelController}">
                     <f:selectItems value="#{printerModelController.list}"
                                    var="printer_class"
                                    itemValue="#{printer_class}"
                                    itemLabel="#{printer_class.manufacturer}-#{printer_class.model}"/>
+                </h:selectOneMenu>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Отдел"/>
+                </f:facet>
+                <h:selectOneMenu value="#{printer.department}"
+                                 converter="#{departmentController}">
+                    <f:selectItems value="#{departmentController.list}"
+                                   var="department"
+                                   itemValue="#{department}"
+                                   itemLabel="#{department.name}"/>
                 </h:selectOneMenu>
             </h:column>
             <h:column>

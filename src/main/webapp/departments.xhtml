@@ -9,35 +9,29 @@
 <h:head/>
 <h:body style="text-align: center">
     <h:button value="Принтеры" outcome="printers"/>
+    <h:button value="Виды принтеров" outcome="printer_models"/>
     <h:button value="Запчасти" outcome="expendables"/>
     <h:button value="Виды запчастей" outcome="expendable_types"/>
-    <h:button value="Отделы" outcome="departments"/>
     <h3>Виды принтеров</h3>
     <hr/>
     <h:form>
-        <h:commandButton value="Добавить" action="#{printerModelController.addToList}">
+        <h:commandButton value="Добавить" action="#{departmentController.addToList}">
             <f:ajax execute="@form" render="@form"/>
         </h:commandButton>
-        <h:commandButton value="Сохранить" action="#{printerModelController.mergeList}">
+        <h:commandButton value="Сохранить" action="#{departmentController.mergeList}">
             <f:ajax execute="@form" render="@form"/>
         </h:commandButton>
-        <h:dataTable var="printer_class"
-                     value="#{printerModelController.list}"
+        <h:dataTable var="department"
+                     value="#{departmentController.list}"
                      style="margin: auto; border: 1px solid black;">
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="Производитель"/>
+                    <h:outputText value="Название"/>
                 </f:facet>
-                <h:inputText value="#{printer_class.manufacturer}"/>
+                <h:inputText value="#{department.name}"/>
             </h:column>
             <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Модель"/>
-                </f:facet>
-                <h:inputText value="#{printer_class.model}"/>
-            </h:column>
-            <h:column>
-                <h:commandButton value="x" action="#{printerModelController.removeFromList(printer_class)}">
+                <h:commandButton value="x" action="#{departmentController.removeFromList(department)}">
                     <f:ajax execute="@form" render="@form"/>
                 </h:commandButton>
             </h:column>

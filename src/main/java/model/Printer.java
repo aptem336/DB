@@ -13,6 +13,8 @@ public class Printer extends AbstractModel {
     private String inventoryNumber;
     @ManyToOne(cascade = CascadeType.ALL)
     private PrinterModel printerModel;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Department department;
 
     public String getInventoryNumber() {
         return inventoryNumber;
@@ -28,5 +30,13 @@ public class Printer extends AbstractModel {
 
     public void setPrinterModel(PrinterModel printerModel) {
         this.printerModel = printerModel;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 }

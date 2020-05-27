@@ -48,7 +48,7 @@ public abstract class AbstractController<M extends AbstractModel> implements Con
 
     @Override
     public String getAsString(FacesContext facesContext, UIComponent uiComponent, M m) {
-        return m.getId() + "";
+        return m == null ? null : m.getId() + "";
     }
 
     @Override

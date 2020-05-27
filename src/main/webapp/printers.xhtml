@@ -14,8 +14,9 @@
     <h:button value="Отделы" outcome="departments"/>
     <h3>Принтеры</h3>
     <hr/>
-    <h:form id="form">
-        <h:commandButton value="Добавить" action="#{printerController.addToList}">
+    <h:form>
+        <h:messages showSummary="true" showDetail="true" style="color:red"/>
+        <h:commandButton immediate="true" value="Добавить" action="#{printerController.addToList}">
             <f:ajax execute="@form" render="@form"/>
         </h:commandButton>
         <h:commandButton value="Сохранить" action="#{printerController.mergeList('printers')}"/>

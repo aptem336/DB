@@ -15,7 +15,8 @@
     <h3>Запчасти</h3>
     <hr/>
     <h:form>
-        <h:commandButton value="Добавить" action="#{expendableController.addToList}">
+        <h:messages showDetail="true" style="color:red"/>
+        <h:commandButton immediate="true" value="Добавить" action="#{expendableController.addToList}">
             <f:ajax execute="@form" render="@form"/>
         </h:commandButton>
         <h:commandButton value="Сохранить" action="#{expendableController.mergeList('expendables')}"/>

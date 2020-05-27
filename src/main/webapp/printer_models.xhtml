@@ -15,7 +15,8 @@
     <h3>Виды принтеров</h3>
     <hr/>
     <h:form>
-        <h:commandButton value="Добавить" action="#{printerModelController.addToList}">
+        <h:messages showDetail="true" style="color:red"/>
+        <h:commandButton immediate="true" value="Добавить" action="#{printerModelController.addToList}">
             <f:ajax execute="@form" render="@form"/>
         </h:commandButton>
         <h:commandButton value="Сохранить" action="#{printerModelController.mergeList('printer_models')}"/>

@@ -58,7 +58,7 @@
                 </h:selectOneMenu>
             </h:column>
             <h:column>
-                <h:commandButton value="x" action="#{printerController.removeFromList(printer)}">
+                <h:commandButton immediate="true" value="x" action="#{printerController.removeFromList(printer)}">
                     <f:ajax execute="@form" render="@form"/>
                 </h:commandButton>
             </h:column>

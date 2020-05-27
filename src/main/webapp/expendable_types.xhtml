@@ -40,7 +40,7 @@
                 </h:inputText>
             </h:column>
             <h:column>
-                <h:commandButton value="x" action="#{expendableTypeController.removeFromList(expendable_type)}">
+                <h:commandButton immediate="true" value="x" action="#{expendableTypeController.removeFromList(expendable_type)}">
                     <f:ajax execute="@form" render="@form"/>
                 </h:commandButton>
             </h:column>

@@ -40,7 +40,7 @@
                 </h:inputText>
             </h:column>
             <h:column>
-                <h:commandButton value="x" action="#{printerModelController.removeFromList(printer_class)}">
+                <h:commandButton immediate="true" value="x" action="#{printerModelController.removeFromList(printer_class)}">
                     <f:ajax execute="@form" render="@form"/>
                 </h:commandButton>
             </h:column>

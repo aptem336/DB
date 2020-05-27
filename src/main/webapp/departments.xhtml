@@ -18,9 +18,7 @@
         <h:commandButton value="Добавить" action="#{departmentController.addToList}">
             <f:ajax execute="@form" render="@form"/>
         </h:commandButton>
-        <h:commandButton value="Сохранить" action="#{departmentController.mergeList}">
-            <f:ajax execute="@form" render="@form"/>
-        </h:commandButton>
+        <h:commandButton value="Сохранить" action="#{departmentController.mergeList('departments')}"/>
         <h:dataTable var="department"
                      value="#{departmentController.list}"
                      style="margin: auto; border: 1px solid black;">
@@ -28,7 +26,9 @@
                 <f:facet name="header">
                     <h:outputText value="Название"/>
                 </f:facet>
-                <h:inputText value="#{department.name}"/>
+                <h:inputText value="#{department.name}">
+                    <f:passThroughAttribute name="required" value="true"/>
+                </h:inputText>
             </h:column>
             <h:column>
                 <h:commandButton value="x" action="#{departmentController.removeFromList(department)}">

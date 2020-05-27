@@ -14,13 +14,11 @@
     <h:button value="Отделы" outcome="departments"/>
     <h3>Принтеры</h3>
     <hr/>
-    <h:form>
+    <h:form id="form">
         <h:commandButton value="Добавить" action="#{printerController.addToList}">
             <f:ajax execute="@form" render="@form"/>
         </h:commandButton>
-        <h:commandButton value="Сохранить" action="#{printerController.mergeList}">
-            <f:ajax execute="@form" render="@form"/>
-        </h:commandButton>
+        <h:commandButton value="Сохранить" action="#{printerController.mergeList('printers')}"/>
         <h:dataTable var="printer"
                      value="#{printerController.list}"
                      style="margin: auto; border: 1px solid black;">
@@ -28,7 +26,9 @@
                 <f:facet name="header">
                     <h:outputText value="Инвентарный номер"/>
                 </f:facet>
-                <h:inputText value="#{printer.inventoryNumber}"/>
+                <h:inputText value="#{printer.inventoryNumber}">
+                    <f:passThroughAttribute name="required" value="true"/>
+                </h:inputText>
             </h:column>
             <h:column>
                 <f:facet name="header">
@@ -40,6 +40,7 @@
                                    var="printer_class"
                                    itemValue="#{printer_class}"
                                    itemLabel="#{printer_class.manufacturer}-#{printer_class.model}"/>
+                    <f:passThroughAttribute name="required" value="true"/>
                 </h:selectOneMenu>
             </h:column>
             <h:column>
@@ -52,6 +53,7 @@
                                    var="department"
                                    itemValue="#{department}"
                                    itemLabel="#{department.name}"/>
+                    <f:passThroughAttribute name="required" value="true"/>
                 </h:selectOneMenu>
             </h:column>
             <h:column>

@@ -39,7 +39,7 @@ public abstract class AbstractController<M extends AbstractModel> implements Con
     }
 
     @Transactional
-    public void mergeList() {
+    public String mergeList(String viewId) {
         List<M> persistentList = getEntityManager().createNamedQuery(getAllNamedQuery(), getModelClass()).getResultList();
         persistentList.forEach(m -> {
             m = getEntityManager().merge(m);
@@ -54,6 +54,7 @@ public abstract class AbstractController<M extends AbstractModel> implements Con
                 getEntityManager().persist(m);
             }
         });
+        return viewId+"?faces-redirect=true";
     }
 
     @Override

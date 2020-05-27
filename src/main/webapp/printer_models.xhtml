@@ -18,9 +18,7 @@
         <h:commandButton value="Добавить" action="#{printerModelController.addToList}">
             <f:ajax execute="@form" render="@form"/>
         </h:commandButton>
-        <h:commandButton value="Сохранить" action="#{printerModelController.mergeList}">
-            <f:ajax execute="@form" render="@form"/>
-        </h:commandButton>
+        <h:commandButton value="Сохранить" action="#{printerModelController.mergeList('printer_models')}"/>
         <h:dataTable var="printer_class"
                      value="#{printerModelController.list}"
                      style="margin: auto; border: 1px solid black;">
@@ -28,13 +26,17 @@
                 <f:facet name="header">
                     <h:outputText value="Производитель"/>
                 </f:facet>
-                <h:inputText value="#{printer_class.manufacturer}"/>
+                <h:inputText value="#{printer_class.manufacturer}">
+                    <f:passThroughAttribute name="required" value="true"/>
+                </h:inputText>
             </h:column>
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Модель"/>
                 </f:facet>
-                <h:inputText value="#{printer_class.model}"/>
+                <h:inputText value="#{printer_class.model}">
+                    <f:passThroughAttribute name="required" value="true"/>
+                </h:inputText>
             </h:column>
             <h:column>
                 <h:commandButton value="x" action="#{printerModelController.removeFromList(printer_class)}">

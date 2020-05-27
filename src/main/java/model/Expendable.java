@@ -3,14 +3,18 @@ package model;
 import controller.ExpendableController;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @NamedQuery(name = ExpendableController.getAllExpendables, query = "SELECT e FROM Expendable e")
 public class Expendable extends AbstractModel {
+    @NotNull
     private String serialNumber;
+    @NotNull
     private Integer mileage;
     @OneToOne(cascade = CascadeType.ALL)
     private Printer printer;
+    @NotNull
     @ManyToOne(cascade = CascadeType.ALL)
     private ExpendableType expendableType;
 

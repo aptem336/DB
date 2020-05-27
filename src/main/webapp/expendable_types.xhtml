@@ -18,9 +18,7 @@
         <h:commandButton value="Добавить" action="#{expendableTypeController.addToList}">
             <f:ajax execute="@form" render="@form"/>
         </h:commandButton>
-        <h:commandButton value="Сохранить" action="#{expendableTypeController.mergeList}">
-            <f:ajax execute="@form" render="@form"/>
-        </h:commandButton>
+        <h:commandButton value="Сохранить" action="#{expendableTypeController.mergeList('expendable_types')}"/>
         <h:dataTable var="expendable_type"
                      value="#{expendableTypeController.list}"
                      style="margin: auto; border: 1px solid black;">
@@ -28,7 +26,9 @@
                 <f:facet name="header">
                     <h:outputText value="Название"/>
                 </f:facet>
-                <h:inputText value="#{expendable_type.typeName}"/>
+                <h:inputText value="#{expendable_type.typeName}">
+                    <f:passThroughAttribute name="required" value="true"/>
+                </h:inputText>
             </h:column>
             <h:column>
                 <f:facet name="header">

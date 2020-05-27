@@ -2,14 +2,15 @@ package controller;
 
 import model.Printer;
 
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import java.io.Serializable;
 
 @Named
-@RequestScoped
-public class PrinterController extends AbstractController<Printer> {
+@ViewScoped
+public class PrinterController extends AbstractController<Printer> implements Serializable {
     public static final String getAllPrinters = "getAllPrinters";
     @Inject
     private EntityManager em;

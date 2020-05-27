@@ -30,20 +30,30 @@ public abstract class AbstractController<M extends AbstractModel> implements Con
 
     @Transactional
     public void addToList() throws IllegalAccessException, InstantiationException {
-        M m = getModelClass().newInstance();
-        getEntityManager().persist(m);
-        getList().add(m );
+        getList().add(getModelClass().newInstance());
     }
 
     @Transactional
     public void removeFromList(M m) {
         getList().remove(m);
-        getEntityManager().remove(getEntityManager().merge(m));
     }
 
     @Transactional
     public void mergeList() {
-        getList().forEach(getEntityManager()::merge);
+        List<M> persistentList = getEntityManager().createNamedQuery(getAllNamedQuery(), getModelClass()).getResultList();
+        persistentList.forEach(m -> {
+            m = getEntityManager().merge(m);
+            if (!getList().contains(m)) {
+                getEntityManager().remove(m);
+            }
+        });
+        getList().forEach(m -> {
+            if (persistentList.contains(m)) {
+                getEntityManager().merge(m);
+            } else {
+                getEntityManager().persist(m);
+            }
+        });
     }
 
     @Override

@@ -2,14 +2,15 @@ package controller;
 
 import model.Expendable;
 
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import java.io.Serializable;
 
 @Named
-@RequestScoped
-public class ExpendableController extends AbstractController<Expendable> {
+@ViewScoped
+public class ExpendableController extends AbstractController<Expendable> implements Serializable {
     public static final String getAllExpendables = "getAllExpendables";
     @Inject
     private EntityManager em;

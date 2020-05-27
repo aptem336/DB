@@ -2,17 +2,19 @@ package controller;
 
 import model.Department;
 
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import java.io.Serializable;
 
 @Named
-@RequestScoped
-public class DepartmentController extends AbstractController<Department> {
+@ViewScoped
+public class DepartmentController extends AbstractController<Department> implements Serializable {
     public static final String getAllDepartments = "getAllDepartments";
     @Inject
     private EntityManager em;
+
     @Override
     EntityManager getEntityManager() {
         return em;
